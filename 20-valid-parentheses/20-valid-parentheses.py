@@ -2,14 +2,12 @@ class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
         dict = {"]":"[", "}":"{", ")":"("}
-        for char in s:
-            if char in dict:
+        
+        for c in s:
+            if c in dict:
                 top = stack.pop() if stack else '#'
-                
-                if top != dict[char]:
+                if top != dict[c]:
                     return False
             else:
-                stack.append(char)
+                stack.append(c)
         return stack == []
-        
-        
