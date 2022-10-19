@@ -8,19 +8,26 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
-        if root is None:
-            return []
+#         if root is None:
+#             return []
         
-        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
-            
-#             if currentNode.left:
-#                 ans.append(currentNode.left)
+#         return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
+        
+        res = []
+        stack = []
+                
+        while stack or root:
+            if root:
+                stack.append(root)
+                root = root.left
+            else:
+                topNode = stack.pop()
+                res.append(topNode.val)
+                root = topNode.right
+        return res
 
-#             ans.append(currentNode)
             
-#             if currentNode.right:
-#                 ans.append(currentNode.right)
-#         return ans
+
             
             
     
