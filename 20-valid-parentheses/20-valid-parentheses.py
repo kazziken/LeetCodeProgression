@@ -3,11 +3,12 @@ class Solution:
         stack = []
         dict = {"]":"[", "}":"{", ")":"("}
         
-        for c in s:
-            if c in dict:
-                top = stack.pop() if stack else '#'
-                if top != dict[c]:
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
                     return False
             else:
-                stack.append(c)
+                return False
         return stack == []
