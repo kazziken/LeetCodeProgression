@@ -9,6 +9,4 @@ class Solution:
             elif char in dict.keys():
                 if stack == [] or dict[char] != stack.pop():
                     return False
-            else:
-                return False
         return stack == []
