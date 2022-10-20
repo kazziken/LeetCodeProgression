@@ -18,20 +18,12 @@ class Solution:
             return True
         
         
-        return self.isMirror(root.left, root.right)
+        return self.is_reverse(root.left, root.right)
     
-    def isMirror(self, left, right):
-        if left is None and right is None:
-            return True
-        if left is None or right is None:
-            return False
-        
-        if left.val == right.val:
-            outPair = self.isMirror(left.left, right.right)
-            inPair = self.isMirror(left.right, right.left)
-            return outPair and inPair
-        else:
-            return False
+    def is_reverse(self, a, b):
+        if not a or not b:
+            return not a and not b
+        return a.val == b.val and self.is_reverse(a.left,b.right) and self.is_reverse(a.right,b.left)      
 
         #Iteratively
         
