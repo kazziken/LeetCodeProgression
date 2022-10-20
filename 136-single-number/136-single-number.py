@@ -18,8 +18,16 @@ class Solution:
         ]
         """
         
-        #store XOR  here
-        res = 0 #n ^ 0 = n
+        # #store XOR  here
+        # res = 0 #n ^ 0 = n
+        # for n in nums:
+        #     res = n ^ res 
+        # return res
+        
+        dic = {}
+        
         for n in nums:
-            res = n ^ res 
-        return res
+            dic[n] = dic.get(n, 0) + 1
+        for key, val in dic.items():
+            if val == 1:
+                return key
