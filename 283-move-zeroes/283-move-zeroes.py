@@ -16,9 +16,5 @@ class Solution:
         for fast in range(len(nums)):
             if nums[fast] != 0:
                 nums[slow], nums[fast] = nums[fast], nums[slow]
-                slow +=1
-                    
-        #[1,2,3,0,0,4,5]
-                #^slow
-        
+                slow += 1
         
