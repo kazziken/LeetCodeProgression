@@ -7,4 +7,5 @@ class Solution:
             if diff in hashMap:
                 return [i, hashMap[diff]]
             hashMap[nums[i]] = i
-            
+            # [2,7,11,15]
+            # k = 2 v = 0
