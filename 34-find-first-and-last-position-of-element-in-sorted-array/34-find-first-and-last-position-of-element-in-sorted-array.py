@@ -1,40 +1,41 @@
-class Solution(object):
-    def searchRange(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+                
+        start = self.find_Starting_Index(nums, target)
+        end = self.find_Ending_Index(nums,target)
         
-        first = self.findFirstIndex(nums, target)
-
-        second = self.findLastIndex(nums, target)
-        
-        return [first, second]
-    def findFirstIndex(self, nums, target):
-        res = -1
-        low, high = 0, len(nums)-1
-        while low <= high:
-            mid = (low+high)//2
-            if nums[mid] == target:
-                res = mid
-                high = mid-1
-            elif nums[mid] > target:
-                high = mid-1
-            else:
-                low = mid + 1
-        return res
+        return [start,end]
     
-    def findLastIndex(self, nums, target):
-        res = -1
-        low, high = 0, len(nums)-1
-        while low <= high:
-            mid = (low+high)//2
+    def find_Starting_Index(self, nums ,target):
+        index = -1
+        left, right = 0, len(nums) -1
+        
+        while left <= right:
+            mid = (left+right)//2
+            
             if nums[mid] == target:
-                res = mid
-                low = mid+1
+                index = mid
+                right = mid - 1 # this will start to find the ending index
             elif nums[mid] > target:
-                high = mid-1
+                right = mid - 1
             else:
-                low = mid + 1
-        return res
+                left = mid + 1
+        return index
+    
+    def find_Ending_Index(self, nums ,target):
+        index = -1
+        left, right = 0, len(nums) -1
+        
+        while left <= right:
+            mid = (left+right)//2
+            
+            if nums[mid] == target:
+                index = mid
+                left = mid + 1 # this will start to find the ending index
+            elif nums[mid] > target:
+                right = mid - 1
+            else:
+                left = mid + 1
+        return index
+        
+        
